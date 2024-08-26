@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product and Token Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+
+        header {
+            background-color: #1C1C1C;
+            padding: 10px 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 50px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: 16px;
+        }
+
+        .wallet-btn {
+            background-color: #FFB100;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .wallet-btn:hover {
+            background-color: #FFCC33;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #FFB100;
+        }
+
+        .bitcoin-icon img {
+            width: 150px;
+            margin-top: -60px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #BBBBBB;
+        }
+
+        .image-under-navbar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image-under-navbar img {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+        }
+
+        /* Common Section Styles */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #f4b000;
+        }
+
+        .description {
+            margin-bottom: 40px;
+            font-size: 1.2em;
+            color: #ccc;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: #222;
+            border: 2px solid #666;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-card img {
+            max-width: 50px;
+            margin-bottom: 20px;
+        }
+
+        .product-card h2 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .product-card p {
+            color: #bbb;
+        }
+
+        /* Roadmap Section */
+        .roadmap-section {
+            background-color: #f4b000;
+            padding: 50px 0;
+            color: black;
+            text-align: left;
+        }
+
+        .roadmap-timeline {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .roadmap-phase {
+            display: flex;
+            margin-bottom: 40px;
+        }
+
+        .phase-number {
+            background-color: #FFB100;
+            color: #121212;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            margin-right: 20px;
+        }
+
+        .phase-content h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .phase-content p {
+            margin-bottom: 10px;
+        }
+
+        /* Tokens Section */
+        .tokens-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .tokens-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .token-card {
+            background-color: #222;
+            border: 2px solid #666;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .token-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .token-card img {
+            max-width: 50px;
+            margin-bottom: 20px;
+        }
+
+        .token-card h2 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .details-btn {
+            background-color: #FFB100;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .details-btn:hover {
+            background-color: #FFCC33;
+        }
+
+        .pagination {
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            background-color: #FFB100;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .pagination button:hover {
+            background-color: #FFCC33;
+        }
+
+        .pagination span {
+            font-size: 16px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="bitverse-logo.png" alt="Bitverse Finance">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Our Products</a></li>
+                <li><a href="#">Token Utility</a></li>
+                <li><a href="#">Roadmap</a></li>
+            </ul>
+            <button class="wallet-btn">Connect Wallet</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>YOUR GATEWAY TO <span>DEFI ON BITCOIN</span></h1>
+            <div class="bitcoin-icon">
+                <img src="Hero Section.png" alt="Bitcoin Icon">
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur. Porta amet tellus suspendisse id velit proin eleifend id mauris. Amet sem in id eget nunc quam lacus tellus augue.</p>
+        </section>
+
+        <div class="image-under-navbar">
+            <img src="Hero Section.png" alt="Hero Section">
+        </div>
+
+        <section class="products-section">
+            <h1>Our <span class="highlight">Products</span></h1>
+            <p class="description">Pellentesque habitant morbi tristique senectus et netus et Pellentesque habitant morbi.</p>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="shopping-cart-icon.png" alt="Sita Marketplace" class="product-icon">
+                    <h2>Sita Marketplace</h2>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+                </div>
+                <div class="product-card">
+                    <img src="coin-icon.png" alt="Bitadex" class="product-icon">
+                    <h2>Bitadex</h2>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+                </div>
+                <div class="product-card">
+                    <img src="link-icon.png" alt="Bitabridge" class="product-icon">
+                    <h2>Bitabridge</h2>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+                </div>
+                <div class="product-card">
+                    <img src="rocket-icon.png" alt="Bitapad" class="product-icon">
+                    <h2>Bitapad</h2>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+                </div>
+                <div class="product-card">
+                    <img src="money-icon.png" alt="Bitalend" class="product-icon">
+                    <h2>Bitalend</h2>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="roadmap-section">
+            <h1>Roadmap</h1>
+            <div class="roadmap-timeline">
+                <div class="roadmap-phase">
+                    <div class="phase-number">01</div>
+                    <div class="phase-content">
+                        <h2>Initial Design and Development</h2>
+                        <p>Q4 2023</p>
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+                    </div>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="phase-number">02</div>
+                    <div class="phase-content">
+                        <h2>Release and Testing of Bita Market & Bridge</h2>
+                        <p>Q1 2024</p>
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+                    </div>
+                </div>
+                <div class="roadmap-phase">
+                    <div class="phase-number">03</div>
+                    <div class="phase-content">
+                        <h2>Bitapad & Rollout</h2>
+                        <p>Q2 2024</p>
+                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada Pellentesque habitant morbi tristique senectus et netus et malesuada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tokens-section">
+            <h1>Our <span class="highlight">Tokens</span></h1>
+            <p class="description">Pellentesque habitant morbi tristique senectus et netus et Pellentesque habitant morbi.</p>
+            <div class="tokens-grid">
+                <div class="token-card">
+                    <img src="bitcoin-icon.png" alt="Bitcoin" class="token-icon">
+                    <h2>Bitcoin</h2>
+                    <p>Symbol: BTC</p>
+                    <p>Decimals: 18</p>
+                    <p>Market Cap: $1000000</p>
+                    <p>Chain: Bitcoin</p>
+                    <button class="details-btn">Details</button>
+                </div>
+                <!-- Repeat for additional tokens -->
+            </div>
+            <div class="pagination">
+                <button class="prev">Previous</button>
+                <span>Page 1 of 10</span>
+                <button class="next">Next</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
